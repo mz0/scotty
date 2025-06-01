@@ -13,7 +13,7 @@
 * [background.js](browse-xtension/background.js)
 * [saveit.js](browse-xtension/saveit.js)
 * [about.html](browse-xtension/about.html)
-* icons in `images/` [by Hilmy Abiyyu A. - Flaticon](https://www.flaticon.com/free-icons/storage)
+* icons in `images/` [by Hilmy Abiyyu A. - Flaticon](https://www.flaticon.com/free-icon/cloud-storage_10446173)
 
 
 ### Install the Extension

@@ -1,3 +1,5 @@
+const brwsr = typeof browser !== 'undefined' ? browser : chrome;
+
 let modal = null;
 
 function createModal(selectedText) {
@@ -30,14 +32,14 @@ function createModal(selectedText) {
   tagsLabel.textContent = 'Tags: ';
   const tagsInput = document.createElement('input');
   tagsInput.type = 'text';
-  tagsInput.id = 'charome-tags';
+  tagsInput.id = 'saveit-tags';
   modal.appendChild(tagsLabel);
   modal.appendChild(tagsInput);
 
   const routeLabel = document.createElement('label');
   routeLabel.textContent = 'Route: ';
   const routeSelect = document.createElement('select');
-  routeSelect.id = 'charome-route';
+  routeSelect.id = 'saveit-route';
   const option1 = document.createElement('option');
   option1.value = 'route1';
   option1.textContent = 'Route 1';
@@ -52,8 +54,8 @@ function createModal(selectedText) {
   const sendButton = document.createElement('button');
   sendButton.textContent = 'Send to Server';
   sendButton.addEventListener('click', () => {
-    const tags = document.getElementById('charome-tags').value;
-    const route = document.getElementById('charome-route').value;
+    const tags = document.getElementById('saveit-tags').value;
+    const route = document.getElementById('saveit-route').value;
     sendDataToServer(selectedText, tags, route, pageUrl); // Pass the URL
     modal.remove();
     modal = null;
@@ -73,7 +75,7 @@ function createModal(selectedText) {
 
 function sendDataToServer(text, tags, route, url) { // Accept the URL
   // Replace with your server endpoint
-  const serverUrl = 'YOUR_SERVER_URL';
+  const serverUrl = 'http://localhost:3000/saveit';
 
   fetch(serverUrl, {
     method: 'POST',
@@ -84,13 +86,12 @@ function sendDataToServer(text, tags, route, url) { // Accept the URL
       selectedText: text,
       tags: tags,
       route: route,
-      pageUrl: url // Send the URL to the server
+      pageUrl: url // Save current URL too
     }),
   })
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
-    // Optionally display a success message to the user
   })
   .catch((error) => {
     console.error('Error:', error);
@@ -98,7 +99,7 @@ function sendDataToServer(text, tags, route, url) { // Accept the URL
   });
 }
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+brwsr.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "openModal" && request.selectedText) {
     createModal(request.selectedText);
   }

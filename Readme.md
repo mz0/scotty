@@ -1,4 +1,4 @@
-# Chrome browser extension
+# Browser extension (Scotty)
 
 * select page text with a mouse
 * using a Ctrl-Alt-S combination or right-mouse click open a modal dialog
@@ -7,17 +7,70 @@
 * send it for processing on my [server](b-end/server.js)
 
 
-## `chrome-extension/`
+## `browse-xtension/`
 
-* [manifest.json](chrome-extension/manifest.json) - See [content_scripts](https://developer.chrome.com/docs/extensions/reference/manifest/content-scripts)
-* [background.js](chrome-extension/background.js)
-* [saveit.js](chrome-extension/saveit.js)
-* [about.html](chrome-extension/about.html)
+* [manifest.json](browse-xtension/manifest.json) - See [content_scripts](https://developer.chrome.com/docs/extensions/reference/manifest/content-scripts)
+* [background.js](browse-xtension/background.js)
+* [saveit.js](browse-xtension/saveit.js)
+* [about.html](browse-xtension/about.html)
 * icons in `images/` [by Hilmy Abiyyu A. - Flaticon](https://www.flaticon.com/free-icons/storage)
 
 
 ### Install the Extension
 
-* in Chrome go to `chrome://extensions/`
+* in **Chrome** go to `chrome://extensions/`
 * enable "Developer mode" in the top right corner
-* click "Load unpacked" in the top left corner and select this `chrome-extension` folder
+* click "Load unpacked" in the top left corner and select this `browse-extension` folder
+
+* in **Firefox** go `about:debugging#/runtime/this-firefox`
+* *Temorary Extensitons* section is the 1st, **Load Temporary Add-on...** button
+
+Keep in mind: after Firefox restart it will be gone.
+
+
+### Run the *server*
+```
+b-end$ npm start
+
+> net.x320.saveit@0.0.1 start
+> node server.js
+
+Server listening at http://localhost:3000
+Received data:
+```
+(the received data is below)
+```js
+// Beamed with Chrome
+{
+  selectedText: 'Modifier key strings Ctrl, Alt, Shift, MacCtrl (macOS only), Command (macOS only), Search (ChromeOS only)',
+  tags: 'KB, Chrome',
+  route: 'route1',
+  pageUrl: 'https://developer.chrome.com/docs/extensions/reference/api/commands#supported_keys'
+}
+
+{
+  selectedText: 'I Am Done With Graph QL After 6 Years; ThePrimeTime; 166K views; 11 months ago; Recorded live on twitch',
+  tags: 'API',
+  route: 'route2',
+  pageUrl: 'https://www.youtube.com/watch?v=XBUsRVepF-8'
+}
+
+// Beamed with Firefox
+{
+  selectedText: "Let's reproduce GPT-2 (124M); Andrej Karpathy; 811K views;" +
+ '11 months ago; We reproduce the GPT-2 (124M) from scratch.',
+  tags: 'yt, long',
+  route: 'route2',
+  pageUrl: 'https://www.youtube.com/watch?v=l8pRSuU81PU'
+}
+```
+
+### Note
+
+Downsize and add PNG background using GIMP `convert`:
+```
+convert icons-cache/cloud-store64.png \
+  -resize 48x48 \
+  -background white -flatten \
+ browse-xtension/images/icon48.png
+```

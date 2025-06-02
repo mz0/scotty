@@ -1,5 +1,10 @@
 const brwsr = typeof browser !== 'undefined' ? browser : chrome;
 
+let serverBase;
+brwsr.storage.sync.get(['serverAddress'], (items) => {
+  serverBase = items.serverAddress || 'https://localhost:1337';
+});
+
 let modal = null;
 
 function createModal(selectedText) {
@@ -75,7 +80,7 @@ function createModal(selectedText) {
 
 function sendDataToServer(text, tags, route, url) { // Accept the URL
   // Replace with your server endpoint
-  const serverUrl = 'http://localhost:3000/saveit';
+  const serverUrl = `${serverBase}/saveit`;
 
   fetch(serverUrl, {
     method: 'POST',

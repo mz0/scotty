@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "SaveIt",
-  "version": "0.1",
+  "name": "Scotty",
+  "version": "0.2",
   "description": "Select text and send it to KnowIt server.",
   "permissions": [
     "contextMenus",
@@ -39,6 +39,12 @@
         "default": "Ctrl+Shift+S"
       },
       "description": "Open BeamIt dialog with selected text"
+    }
+  },
+  "options_page": "config.html",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "scotty@x320.net"
     }
   }
 }

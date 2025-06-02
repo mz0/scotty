@@ -17,13 +17,13 @@
 
 
 ### Install the Extension
+* **Chrome**
+  * go to `chrome://extensions/` and enable "Developer mode" in the top right corner
+  * click "Load unpacked" in the top left corner and select this `browse-extension` folder
 
-* in **Chrome** go to `chrome://extensions/`
-* enable "Developer mode" in the top right corner
-* click "Load unpacked" in the top left corner and select this `browse-extension` folder
-
-* in **Firefox** go `about:debugging#/runtime/this-firefox`
-* *Temorary Extensitons* section is the 1st, **Load Temporary Add-on...** button
+* **Firefox**
+  * go `about:debugging#/runtime/this-firefox`
+  * *Temorary Extensitons* section is the 1st, **Load Temporary Add-on...** button
 
 Keep in mind: after Firefox restart it will be gone.
 
@@ -53,6 +53,13 @@ Received data:
   tags: 'API',
   route: 'route2',
   pageUrl: 'https://www.youtube.com/watch?v=XBUsRVepF-8'
+}
+
+{
+  selectedText: '"Beam me up, Scotty" is a catchphrase and misquotation ..from the science fiction television series Star Trek: The Original Series. It comes from the command Captain Kirk gives his chief engineer, Montgomery "Scotty" Scott, when he needs to be "transported" back to the Starship Enterprise.',
+  tags: 'Good2Know',
+  route: 'route1',
+  pageUrl: 'https://en.wikipedia.org/wiki/Beam_me_up,_Scotty'
 }
 
 // Beamed with Firefox

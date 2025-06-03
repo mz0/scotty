@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["saveit.js"]
+      "js": ["createModal.js", "saveit.js"]
     }
   ],
   "action": {

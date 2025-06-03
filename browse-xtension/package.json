@@ -1,0 +1,22 @@
+{
+  "name": "scotty",
+  "version": "0.0.3",
+  "description": "\"Beam It Up\" browser plugin",
+  "main": "todo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mz0/scotty.git"
+  },
+  "author": "Mark Zhitomirski",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mz0/scotty/issues"
+  },
+  "homepage": "https://github.com/mz0/scotty#readme",
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
